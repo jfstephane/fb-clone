@@ -41,4 +41,4 @@ function StoryReel() {
     )
 }
 
-export default StoryReel
+export default StoryReel;

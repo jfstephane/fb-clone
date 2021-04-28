@@ -20,12 +20,6 @@ function App() {
 </div>
 
 
-
-{/*App Body*/}
-{/*Sidebar*/}
-{/*Feed*/}
-{/*Widgets*/}
-
     </div>
   );
 }
