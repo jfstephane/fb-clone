@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Feed.css"
+import MesssageSender from './MesssageSender';
 import StoryReel from './StoryReel';
 
 function Feed() {
@@ -7,6 +8,7 @@ function Feed() {
         <div className="feed">
 
             <StoryReel/>
+            <MesssageSender/>
             
         </div>
     )
