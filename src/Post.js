@@ -12,6 +12,7 @@ function Post({ profilePic, image, username, timestamp, message}) {
                     <h3>{username}</h3>
                     <p>Timestamp...</p>
                 </div>
+                </div>
                 <div className="post__bottom">
                     <p>{message}</p>
                 </div>
@@ -38,7 +39,7 @@ function Post({ profilePic, image, username, timestamp, message}) {
                     </div>
                 </div>
 
-            </div>
+            
         </div>
     )
 }
