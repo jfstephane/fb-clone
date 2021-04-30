@@ -1,40 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Feed.css";
 import MesssageSender from './MesssageSender';
 import Post from './Post';
 import StoryReel from './StoryReel';
+import db from "./firebase"
 
 function Feed() {
+
+    const[posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        db.collection("posts").onSnapshot((snapshot) => 
+        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+    
+    );
+    }, []);
+
+
     return (
         <div className="feed">
 
             <StoryReel/>
             <MesssageSender/>
-            <Post
-            profilePic="https://upload.wikimedia.org/wikipedia/commons/3/35/Pisitif_logo_2018_%28French_film_magazine%29.png"
-            message='yooooo'
-            timestamp='yeeeeee'
-            username="test"
-            image="https://upload.wikimedia.org/wikipedia/commons/3/35/Pisitif_logo_2018_%28French_film_magazine%29.png"
-            />
-
-            <Post
-            profilePic="https://upload.wikimedia.org/wikipedia/commons/3/35/Pisitif_logo_2018_%28French_film_magazine%29.png"
-            message='yooooo'
-            timestamp='yeeeeee'
-            username="test" 
-            />
-
-<Post
-            profilePic="https://upload.wikimedia.org/wikipedia/commons/3/35/Pisitif_logo_2018_%28French_film_magazine%29.png"
-            message='yooooo'
-            timestamp='yeeeeee'
-            username="test"
-            image="https://c8.alamy.com/comp/PMC6F7/abstraction-orange-bokeh-on-a-blue-background-defocused-free-space-for-text-PMC6F7.jpg"
-            />
+           { posts.map((post) => (
+               <Post
+               key = {post.id}
+               profilePic = {post.profilePic}
+               message = {post.message}
+               timestamp = {post.timestamp}
+               username = {post.username}
+               image = {post.image}/>
+           ))}
             
         </div>
-    )
+    );
 }
 
 export default Feed;
